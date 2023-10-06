@@ -12,7 +12,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       rec {
-        packages = {
+        packages = rec {
           scraper = pkgs.writeShellScriptBin "scrape" ''
                         if [ $# -ne 2 ]; then
                           echo "please provide a url and a number of passes"
@@ -39,12 +39,18 @@
               sha256 = "sha256-GlQf+BDlll75Dqs2sqWVboeA7ODiWzcklpLAU4i9NwU=";
             };
           };
+          dreide = pkgs.python3Packages.buildPythonPackage {
+            pname = "dreide";
+            version = "0.0.1";
+            buildInputs = [ gcodepy ];
+            src = ./src;
+          };
         };
         devShells = {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              
-			  (pkgs.python3.withPackages (ps: [packages.gcodepy]))
+
+              (pkgs.python3.withPackages (ps: [ packages.gcodepy ]))
             ];
           };
         };
