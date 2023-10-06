@@ -47,7 +47,6 @@
             installPhase = ''
               mkdir -p $out/bin
               ln -s $src/main.py $out/bin/${pname}
-              chmod +x $src/main.py $out/bin/${pname}
             '';
           };
         };
