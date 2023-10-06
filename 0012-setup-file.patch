@@ -1,0 +1,25 @@
+From 338836822d0e7451476403f949870eae057029ff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6ran=20Heinemann?= <goeran@karsdorf.net>
+Date: Fri, 6 Oct 2023 15:48:03 +0200
+Subject: [PATCH 12/12] setup file
+
+---
+ setup.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 setup.py
+
+diff --git a/setup.py b/setup.py
+new file mode 100644
+index 0000000..bac24a4
+--- /dev/null
++++ b/setup.py
+@@ -0,0 +1,6 @@
++#!/usr/bin/env python
++
++import setuptools
++
++if __name__ == "__main__":
++    setuptools.setup()
+-- 
+2.39.2
+
