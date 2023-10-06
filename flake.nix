@@ -39,11 +39,16 @@
               sha256 = "sha256-GlQf+BDlll75Dqs2sqWVboeA7ODiWzcklpLAU4i9NwU=";
             };
           };
-          dreide = pkgs.python3Packages.buildPythonPackage {
+          dreide = pkgs.python3Packages.buildPythonApplication rec {
             pname = "dreide";
             version = "0.0.1";
             buildInputs = [ gcodepy ];
             src = ./src;
+            installPhase = ''
+              mkdir -p $out/bin
+              ln -s $src/main.py $out/bin/${pname}
+              chmod +x $src/main.py $out/bin/${pname}
+            '';
           };
         };
         devShells = {
